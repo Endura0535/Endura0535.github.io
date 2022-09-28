@@ -11,22 +11,52 @@
     "url": "/",
     "relUrl": "/"
   },"2": {
+    "doc": "k진수에서 소수 개수 구하기",
+    "title": "k진수에서 소수 개수 구하기",
+    "content": "import math def trans(n,k): result = \"\" while(n&gt;k): result += str(n%k) n = n//k result += str(n) result = result[::-1] return result def is_prime(n): can_divine = 0 for i in range(2,math.floor(math.sqrt(n))+1): if n%i == 0: can_divine += 1 if can_divine == 0: return True else: return False def solution(n, k): primes = [] answer = 0 trans_n = trans(n,k) numbers = trans_n.split('0') for i in numbers: if i == '2': answer += 1 elif i != '1' and i != '' and is_prime(int(i)): answer += 1 return answer . ",
+    "url": "/docs/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/k%EC%A7%84%EC%88%98%EC%97%90%EC%84%9C%20%EC%86%8C%EC%88%98%20%EA%B0%9C%EC%88%98%20%EA%B5%AC%ED%95%98%EA%B8%B0/",
+    "relUrl": "/docs/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/k%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%89%E1%85%AE%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5%20%E1%84%89%E1%85%A9%E1%84%89%E1%85%AE%20%E1%84%80%E1%85%A2%E1%84%89%E1%85%AE%20%E1%84%80%E1%85%AE%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/"
+  },"3": {
+    "doc": "신고 결과 받기",
+    "title": "신고 결과 받기",
+    "content": "# 신고 결과 받기 ```python def solution(id_list, report, k): answer = [0] * len(id_list) reports = {x : 0 for x in id_list} for r in set(report): reports[r.split()[1]] += 1 for r in set(report): if reports[r.split()[1]] >= k: answer[id_list.index(r.split()[0])] += 1 return answer ``` ",
+    "url": "/docs/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/%EC%8B%A0%EA%B3%A0%20%EA%B2%B0%EA%B3%BC%20%EB%B0%9B%EA%B8%B0/",
+    "relUrl": "/docs/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/%E1%84%89%E1%85%B5%E1%86%AB%E1%84%80%E1%85%A9%20%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A1%E1%86%AE%E1%84%80%E1%85%B5/"
+  },"4": {
+    "doc": "알고리즘",
+    "title": "알고리즘",
+    "content": "# 알고리즘 {: .no_toc } ",
+    "url": "/docs/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/",
+    "relUrl": "/docs/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7/"
+  },"5": {
     "doc": "연결 리스트",
     "title": "연결 리스트",
-    "content": "# 연결 리스트 {: .no_toc } ## {: .no_toc .text-delta } ",
+    "content": "# 연결리스트 ## 단순연결리스트(Singly Linked List) = 동적 메모리 할당을 이용해 노드들을 한 방향으로 연결하여 리스트를 구현하는 자료구조 ### 특징 - 항목에 접근하기 위해서는 순차탐색을 해야한다. - 삽입이나 삭제 시 항목들을 이동시킬 필요가 없으나 반드시 이전 노드를 가리키는 레퍼런스를 알아야한다. ## 이중연결리스트(Doubly Linked List) = 각 노드가 두 개의 레퍼런스를 가지고 각각 이전 노드와 다음 노드를 가리키는 연결리스트 ### 장점: - 삽입이나 삭제 시 이전 노드를 가리키는 레퍼런스를 추가로 알 필요가 없음 - 역방향으로 노드를 탐색할 수 없는 단순연결 리스트의 단점 보완 ### 단점: - 각 노드마다 1개의 레퍼런스 추가 저장 필요 ## 원형연결리스트(Circular Linked List) = 마지막 노드가 첫 노드와 연결된 단순연결리스트 ### 장점: - 첫 노드와 마지막 노드를 O(1) 시간에 방문 - None 조건을 검사할 필요 X -> 리스트가 empty가 아니면 어떤 노드도 None을 가지고 있지 않으므로 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EC%97%B0%EA%B2%B0%20%EB%A6%AC%EC%8A%A4%ED%8A%B8/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%A7%E1%86%AF%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/"
-  },"3": {
+  },"6": {
     "doc": "자료구조 개요",
     "title": "자료구조 개요",
-    "content": "# 자료구조 개요 ## 추상데이터타입(Abstract Data Type)이란? 데이터와 그 데이터에 대한 추상적인 연산들로써 구성된다. ## 자료구조란? 일련의 동일한 타입의 데이터를 정돈하여 저장한 구성체 => 추상데이터타입(ADT) + 구현 ## 자료구조의 효율성 - 시간복잡도(Time Complexity) : 수행시간 - 공간복잡도(Space Complexity) : 사용되는 메모리 공간의 크기 ## 수행시간 분석법 * 최악경우 분석(Worst-case Analysis) => 일반적인 방법 * 평균경우 분석(Average-case Analysis) * 최선경우 분석(Best-case Analysis) ## 점근표기법 입력 크기가 증가함에 따른 수행시간의 간단한 표기법 - O(Big-Oh)-표기: 점근적 상한 - Ω(Big-Omega)-표기: 점근적 하한 - Θ(Theta)-표기: 동일한 증가율 ",
+    "content": "# 자료구조 개요 ## 추상데이터타입(Abstract Data Type) 데이터와 그 데이터에 대한 추상적인 연산들로써 구성된다. ## 자료구조 = 일련의 동일한 타입의 데이터를 정돈하여 저장한 구성체 => 추상데이터타입(ADT) + 구현 ## 자료구조의 효율성 - 시간복잡도(Time Complexity) : 수행시간 - 공간복잡도(Space Complexity) : 사용되는 메모리 공간의 크기 ## 수행시간 분석법 * 최악경우 분석(Worst-case Analysis) => 일반적인 방법 * 평균경우 분석(Average-case Analysis) * 최선경우 분석(Best-case Analysis) ## 점근표기법 입력 크기가 증가함에 따른 수행시간의 간단한 표기법 - O(Big-Oh)-표기: 점근적 상한 - Ω(Big-Omega)-표기: 점근적 하한 - Θ(Theta)-표기: 동일한 증가율 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%20%EA%B0%9C%EC%9A%94/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD/"
-  },"4": {
+  },"7": {
     "doc": "자료구조",
     "title": "자료구조",
     "content": "# 자료구조 {: .no_toc } ",
     "url": "/docs/Data%20Structure",
     "relUrl": "/docs/Data Structure"
+  },"8": {
+    "doc": "주차 요금 계산",
+    "title": "주차 요금 계산",
+    "content": "# 주차 요금 계산 ```python from collections import defaultdict import math def h_to_m(time): hh, mm = time.split(\":\") return int(hh)*60 + int(mm) def solution(fees, records): answer = [] car_records = defaultdict(list) car_numbers = [] for i in records: time, car_number, status = i.split() car_numbers.append(car_number) car_records[car_number].append(time) car_numbers = list(set(car_numbers)) car_numbers.sort() car_times = [] car_records = dict(sorted(car_records.items())) for k, v in car_records.items(): car_time = 0 if(len(v)%2 == 1): v.append(\"23:59\") for t in range(0,len(v)//2): car_time += h_to_m(v[2*t+1]) - h_to_m(v[2*t]) car_times.append(car_time) for i in range(len(car_numbers)): if(car_times[i]<fees[0]): answer.append(fees[1]) else: answer.append(fees[1]+math.ceil(((car_times[i]-fees[0])/fees[2]))*fees[3]) return answer ``` ",
+    "url": "/docs/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/%EC%A3%BC%EC%B0%A8%20%EC%9A%94%EA%B8%88%20%EA%B3%84%EC%82%B0/",
+    "relUrl": "/docs/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1%20%E1%84%8B%E1%85%AD%E1%84%80%E1%85%B3%E1%86%B7%20%E1%84%80%E1%85%A8%E1%84%89%E1%85%A1%E1%86%AB/"
+  },"9": {
+    "doc": "코딩 테스트",
+    "title": "코딩 테스트",
+    "content": "# 코딩 테스트 {: .no_toc } ",
+    "url": "/docs/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/",
+    "relUrl": "/docs/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/"
   }
 }
