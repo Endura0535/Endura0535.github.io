@@ -11,70 +11,58 @@
     "url": "/",
     "relUrl": "/"
   },"2": {
-    "doc": "k진수에서 소수 개수 구하기",
-    "title": "k진수에서 소수 개수 구하기",
-    "content": "import math def trans(n,k): result = \"\" while(n&gt;k): result += str(n%k) n = n//k result += str(n) result = result[::-1] return result def is_prime(n): can_divine = 0 for i in range(2,math.floor(math.sqrt(n))+1): if n%i == 0: can_divine += 1 if can_divine == 0: return True else: return False def solution(n, k): primes = [] answer = 0 trans_n = trans(n,k) numbers = trans_n.split('0') for i in numbers: if i == '2': answer += 1 elif i != '1' and i != '' and is_prime(int(i)): answer += 1 return answer . ",
-    "url": "/docs/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/k%EC%A7%84%EC%88%98%EC%97%90%EC%84%9C%20%EC%86%8C%EC%88%98%20%EA%B0%9C%EC%88%98%20%EA%B5%AC%ED%95%98%EA%B8%B0/",
-    "relUrl": "/docs/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/k%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%89%E1%85%AE%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5%20%E1%84%89%E1%85%A9%E1%84%89%E1%85%AE%20%E1%84%80%E1%85%A2%E1%84%89%E1%85%AE%20%E1%84%80%E1%85%AE%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/"
-  },"3": {
     "doc": "스택과 큐",
     "title": "스택과 큐",
     "content": "# 스택(Stack) = 한 쪽 끝에서만 항목(item)을 삭제하거나 새로운 항목을 저장하는 자료구조 - 후입선출(LIFO -Last In First Out- ) - 컴파일러의 괄호 짝 맞추기, 회문 검사하기, 미로 찾기, 트리의 노드 방문, 그래프의 깊이우선탐색에 사용 # 큐(Queue) = 삽입과 삭제가 양 끝에서 각각 수행되는 자료구조 - 선입선출(FIFO -First In First Out-) - CPU의 태스크 스케쥴링, 네트워크 프린터, 실시간 시스템의 인터럽트 처리, 다양한 이벤트 구동 방식 컴퓨터 시뮬레이션, 콜 센터의 전화 서비스 처리, 이진트리의 레벨순회, 그래프의 너비우선탐색에 사용 # 데크(Deque, Double-ended Queue) = 양쪽 끝에서 삽입과 삭제를 허용하는 자료구조 - 스크롤, 문서 편집기의 undo 연산, 웹 브라우저의 방문 기록 등에 사용 --- ## 참고 ### 서적 파이썬과 함께하는 자료구조의 이해 - 양성봉 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EC%8A%A4%ED%83%9D%EA%B3%BC%20%ED%81%90/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%89%E1%85%B3%E1%84%90%E1%85%A2%E1%86%A8%E1%84%80%E1%85%AA%20%E1%84%8F%E1%85%B2/"
+  },"3": {
+    "doc": "입국 심사",
+    "title": "입국 심사",
+    "content": "# 입국 심사 ## 분류 이분 탐색 ## 문제 설명 n명이 입국심사를 위해 줄을 서서 기다리고 있습니다. 각 입국심사대에 있는 심사관마다 심사하는데 걸리는 시간은 다릅니다. 처음에 모든 심사대는 비어있습니다. 한 심사대에서는 동시에 한 명만 심사를 할 수 있습니다. 가장 앞에 서 있는 사람은 비어 있는 심사대로 가서 심사를 받을 수 있습니다. 하지만 더 빨리 끝나는 심사대가 있으면 기다렸다가 그곳으로 가서 심사를 받을 수도 있습니다. 모든 사람이 심사를 받는데 걸리는 시간을 최소로 하고 싶습니다. 입국심사를 기다리는 사람 수 n, 각 심사관이 한 명을 심사하는데 걸리는 시간이 담긴 배열 times가 매개변수로 주어질 때, 모든 사람이 심사를 받는데 걸리는 시간의 최솟값을 return 하도록 solution 함수를 작성해주세요. ## 제한사항 - 입국심사를 기다리는 사람은 1명 이상 1,000,000,000명 이하입니다. - 각 심사관이 한 명을 심사하는데 걸리는 시간은 1분 이상 1,000,000,000분 이하입니다. - 심사관은 1명 이상 100,000명 이하입니다. ## 입출력 예 | n | times | return | :--: | :-----: | :----: | 6 | [7, 10] | 28 | ## 입출력 예 설명 가장 첫 두 사람은 바로 심사를 받으러 갑니다. 7분이 되었을 때, 첫 번째 심사대가 비고 3번째 사람이 심사를 받습니다. 10분이 되었을 때, 두 번째 심사대가 비고 4번째 사람이 심사를 받습니다. 14분이 되었을 때, 첫 번째 심사대가 비고 5번째 사람이 심사를 받습니다. 20분이 되었을 때, 두 번째 심사대가 비지만 6번째 사람이 그곳에서 심사를 받지 않고 1분을 더 기다린 후에 첫 번째 심사대에서 심사를 받으면 28분에 모든 사람의 심사가 끝납니다. ## 풀이 ### 첫번째 접근 대기 고객을 각 심사대에서 심사 받았을 경우 끝나는 시각을 배열에 저장하여 최소 값을 가진 심사대에 넣기. 마지막 고객을 넣은 후 심사 끝난 시각 리턴. -> 시간 초과 ### 두번째 접근 각 심사대에서 심사에 걸리는 시간 * 대기 고객 수 를 배열에 담은 후, 가장 적은 시간 부터 새 배열에 대기고객 수만큼 담기. 마지막 원소 리턴. -> 시간 초과 ### 세번째 접근 1 ~ 심사에 걸리는 최대 시간 구간에서 모든 고객이 심사완료되는 시간 이분탐색. 모든 고객이 심사완료하지 못했을 경우 -> 중간의 오른쪽 구간(더 큰 시각) 에서 다시 탐색 모든 고객이 심사완료했을 경우 -> 중간의 왼쪽 구간(더 작은 시각)에서 다시 탐색 ## 코드 ```python def solution(n, times): left, right = 1, max(times)*n while left = n: break # 모든 고객이 심사완료 됐을 경우 오른쪽 구간 다시 탐색 if complete >= n: right = mid - 1 answer = mid # 모든 고객 심사완료 되지 않았을 경우 왼쪽 구간 다시 탐색 else: left = mid + 1 return answer ``` ",
+    "url": "/docs/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/%EC%8B%A0%EA%B3%A0%20%EA%B2%B0%EA%B3%BC%20%EB%B0%9B%EA%B8%B0/",
+    "relUrl": "/docs/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3/%E1%84%89%E1%85%B5%E1%86%AB%E1%84%80%E1%85%A9%20%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A1%E1%86%AE%E1%84%80%E1%85%B5/"
   },"4": {
-    "doc": "신고 결과 받기",
-    "title": "신고 결과 받기",
-    "content": "# 신고 결과 받기 ```python def solution(id_list, report, k): answer = [0] * len(id_list) reports = {x : 0 for x in id_list} for r in set(report): reports[r.split()[1]] += 1 for r in set(report): if reports[r.split()[1]] >= k: answer[id_list.index(r.split()[0])] += 1 return answer ``` ",
-    "url": "/docs/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/%EC%8B%A0%EA%B3%A0%20%EA%B2%B0%EA%B3%BC%20%EB%B0%9B%EA%B8%B0/",
-    "relUrl": "/docs/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/%E1%84%89%E1%85%B5%E1%86%AB%E1%84%80%E1%85%A9%20%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A1%E1%86%AE%E1%84%80%E1%85%B5/"
-  },"5": {
     "doc": "알고리즘",
     "title": "알고리즘",
     "content": "# 알고리즘 {: .no_toc } ",
     "url": "/docs/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/",
     "relUrl": "/docs/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7/"
-  },"6": {
+  },"5": {
     "doc": "연결 리스트",
     "title": "연결 리스트",
     "content": "# 연결리스트 ## 단순연결리스트(Singly Linked List) = 동적 메모리 할당을 이용해 노드들을 한 방향으로 연결하여 리스트를 구현하는 자료구조 ### 특징 - 항목에 접근하기 위해서는 순차탐색을 해야한다. - 삽입이나 삭제 시 항목들을 이동시킬 필요가 없으나 반드시 이전 노드를 가리키는 레퍼런스를 알아야한다. ## 이중연결리스트(Doubly Linked List) = 각 노드가 두 개의 레퍼런스를 가지고 각각 이전 노드와 다음 노드를 가리키는 연결리스트 ### 장점: - 삽입이나 삭제 시 이전 노드를 가리키는 레퍼런스를 추가로 알 필요가 없음 - 역방향으로 노드를 탐색할 수 없는 단순연결 리스트의 단점 보완 ### 단점: - 각 노드마다 1개의 레퍼런스 추가 저장 필요 ## 원형연결리스트(Circular Linked List) = 마지막 노드가 첫 노드와 연결된 단순연결리스트 ### 장점: - 첫 노드와 마지막 노드를 O(1) 시간에 방문 - None 조건을 검사할 필요 X -> 리스트가 empty가 아니면 어떤 노드도 None을 가지고 있지 않으므로 --- ## 참고 ### 서적 파이썬과 함께하는 자료구조의 이해 - 양성봉 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EC%97%B0%EA%B2%B0%20%EB%A6%AC%EC%8A%A4%ED%8A%B8/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%A7%E1%86%AF%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/"
-  },"7": {
+  },"6": {
     "doc": "자료구조 개요",
     "title": "자료구조 개요",
     "content": "# 자료구조 개요 ## 추상데이터타입(Abstract Data Type) 데이터와 그 데이터에 대한 추상적인 연산들로써 구성된다. ## 자료구조 = 일련의 동일한 타입의 데이터를 정돈하여 저장한 구성체 => 추상데이터타입(ADT) + 구현 ## 자료구조의 효율성 - 시간복잡도(Time Complexity) : 수행시간 - 공간복잡도(Space Complexity) : 사용되는 메모리 공간의 크기 ## 수행시간 분석법 * 최악경우 분석(Worst-case Analysis) => 일반적인 방법 * 평균경우 분석(Average-case Analysis) * 최선경우 분석(Best-case Analysis) ## 점근표기법 입력 크기가 증가함에 따른 수행시간의 간단한 표기법 - O(Big-Oh)-표기: 점근적 상한 - Ω(Big-Omega)-표기: 점근적 하한 - Θ(Theta)-표기: 동일한 증가율 --- ## 참고 ### 서적 파이썬과 함께하는 자료구조의 이해 - 양성봉 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%20%EA%B0%9C%EC%9A%94/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD/"
-  },"8": {
+  },"7": {
     "doc": "자료구조",
     "title": "자료구조",
     "content": "# 자료구조 {: .no_toc } ",
     "url": "/docs/Data%20Structure",
     "relUrl": "/docs/Data Structure"
-  },"9": {
-    "doc": "주차 요금 계산",
-    "title": "주차 요금 계산",
-    "content": "# 주차 요금 계산 ```python from collections import defaultdict import math def h_to_m(time): hh, mm = time.split(\":\") return int(hh)*60 + int(mm) def solution(fees, records): answer = [] car_records = defaultdict(list) car_numbers = [] for i in records: time, car_number, status = i.split() car_numbers.append(car_number) car_records[car_number].append(time) car_numbers = list(set(car_numbers)) car_numbers.sort() car_times = [] car_records = dict(sorted(car_records.items())) for k, v in car_records.items(): car_time = 0 if(len(v)%2 == 1): v.append(\"23:59\") for t in range(0,len(v)//2): car_time += h_to_m(v[2*t+1]) - h_to_m(v[2*t]) car_times.append(car_time) for i in range(len(car_numbers)): if(car_times[i]<fees[0]): answer.append(fees[1]) else: answer.append(fees[1]+math.ceil(((car_times[i]-fees[0])/fees[2]))*fees[3]) return answer ``` ",
-    "url": "/docs/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/%EC%A3%BC%EC%B0%A8%20%EC%9A%94%EA%B8%88%20%EA%B3%84%EC%82%B0/",
-    "relUrl": "/docs/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1%20%E1%84%8B%E1%85%AD%E1%84%80%E1%85%B3%E1%86%B7%20%E1%84%80%E1%85%A8%E1%84%89%E1%85%A1%E1%86%AB/"
-  },"10": {
-    "doc": "코딩 테스트",
-    "title": "코딩 테스트",
-    "content": "# 코딩 테스트 {: .no_toc } ",
-    "url": "/docs/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8/",
-    "relUrl": "/docs/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC%20%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/"
-  },"11": {
+  },"8": {
     "doc": "탐색트리",
     "title": "탐색트리",
     "content": "# 탐색트리 ## 이진탐색(Binary Search Tree) 조건 ) 정렬된 배열에서만 가능 #### 탐색과정 1. 중간 값과 검색 값 비교 2. 2.1 중간 값 < 검색 값 최솟 값 ~ 중간 값 까지의 구간을 대상으로 탐색 2.2 검색 값 < 중간 값 중간 값 ~ 최댓 값 까지의 구간을 대상으로 탐색 3. 값을 찾거나 배열에 값이 없는 것을 확인할 때까지 반복 #### 수행시간 O(logN) ### 단점 데이터의 삽입과 삭제가 빈번하면 정렬을 유지하기 위해 많은 시간이 소요. 1회의 삽입이나 삭제 연산 수행 시 최악 경우 O(N) 시간이 소요. ### 이진탐색트리 = 이진탐색의 개념을 트리 형태의 구조에 접목시킨 자료구조 - 각 노드 n의 키가 n의 왼쪽 서브트리에 있는 노드들의 키들보다 크고, n의 오른쪽 서브트리ㅔ 있는 노드들의 키보다 작다. - 탐색, 삽입, 삭제 연산의 수행시간은 각각 트리 높이에 비례 ## AVL 트리 = 임의의 노드 n에 대해 노드 n의 왼쪽 서브트리의 높이와 오른쪽 서브트리의 높이 차이가 1을 넘지 않는 이진탐색트리 - 회전 연산을 통해 조절하여 트리 높이의 균형을 유지하는 이진탐색트리 - 탐색, 삽입, 삭제 연산의 수행시간은 O(logN) --- ## 참고 ### 서적 파이썬과 함께하는 자료구조의 이해 - 양성봉 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%90%E1%85%A1%E1%86%B7%E1%84%89%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5/"
-  },"12": {
+  },"9": {
     "doc": "트리",
     "title": "트리",
     "content": "# 트리(Tree) = 실제 트리를 거꾸로 세워 놓은 형태의 계층적 자료구조 - 삽입이나 삭제 후에도 정렬 상태를 유지하기 위해 O(N) 시간이 소요되는 list 의 단점 보완 ## 왼쪽자식-오른쪽형제(Left Child-Right Sibling) 표현 => 차수가 일정하지 않은 일반적인 트리를 구현하기에 매우 효율적 - HTML, XML의 문서 트리, 운영체제의 파일시스템, 탐색트리, 이항(Binomial)힙, 피보나치(Fibonacci)힙 과 같은 우선순위큐에서 사용 # 이진트리(Binary Tree) = 각 노드의 자식 수가 2 이하인 트리 ## 이진트리 종류 ![이진트리 벤다이어그램](/assets/images/이진트리 벤다이어그램.jpg) ### 포화이진트리(Full Binary Tree) = 모든 이파리의 깊이가 같고 각 내부노드가 2개의 자식노드를 가지는 트리 ex) ```mermaid graph TD; A-->B; A-->C; B-->D; B-->E; C-->F; C-->G; D-->H; D-->I; E-->J; E-->K; F-->L; F-->M; G-->N; G-->O; ``` ### 완전이진트리(Comeplete Binary Tree) = 마지막 레벨을 제외한 각 레벨이 노드들로 꽉 차있고, 마지막 레벨에는 노드들이 왼쪽부터 빠짐없이 채워진 트리 ```mermaid graph TD; A-->B; A-->C; B-->D; B-->E; C-->F; C-->G; D-->H; D-->I; E-->J; E-->K; F-->L; ``` ## 이진트리의 연산 ### 1) 전위순회(Preorder Traversal) = 노드 n에 도착했을 때 n을 먼저 방문한다. 그 다음에 n의 왼쪽 자식노드로 순회를 계속한다. n의 왼족 서브트리의 모든 노드들을 방문한 후에는 n의 오른쪽 서브트리의 모든 후손 노드들을 방문한다. ![전위순회](/assets/images/전위순회.png) ### 2) 중위순회(Inorder traversal) = 노드 n에 도착하면 n의 방문을 보류하고 n의 왼쪽 서브트리로 순회를 진행한다. 즉, 왼쪽 서브트리의 모든 노드들을 방문한 후에 n을 방문한다. n을 방문한 후에는 n의 오른쪽 서브트리를 같은 방식으로 방문한다. ![중위순회](/assets/images/중위순회.png) ### 3) 후위순회(Postorder traversal) = 노드 n에 도착하면 n의 방문을 보류하고 n의 왼쪽 서브트리로 순회를 진행한다. n의 왼쪽 서브트리를 방문한 후에는 n의 오른쪽 서브트리를 같은 방식으로 방문한다. 그리고 마지막에 n을 방문한다. ![후위순회](/assets/images/후위순회.png) ### 4) 레벨순회(Level-order Traversal) = 루트가 있는 최상위 레벨부터 시작하여 각 레벨마다 좌에서 우로 노드들을 방문한다. ![레벨순회](/assets/images/레벨순회.png) # 우선순위큐(Priority Queue) = 가장 높은 우선순위를 가진 항목을 접근, 삭제, 삽입 연산을 지원하는 자료구조 - 파이썬은 heapq 라이브러리 제공 # 이진힙(Binary Heap) = 부모의 우선순위가 자식의 우선순위보다 높은 우선순위큐 자료구조 - 완전이진트리 - 키값이 작을 수록 높은 순위 => 최소힙 - 키값이 클 수록 높은 순위 => 최대힙 - 최소힙 기준 - 삭제 연산 -> downheap - 삽입 연산 -> upheap --- ## 참고 ### 서적 파이썬과 함께하는 자료구조의 이해 - 양성봉 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8A%B8%EB%A6%AC/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5/"
+  },"10": {
+    "doc": "프로그래머스",
+    "title": "프로그래머스",
+    "content": "# 프로그래머스 {: .no_toc } ",
+    "url": "/docs/programmers",
+    "relUrl": "/docs/programmers"
   }
 }
