@@ -29,34 +29,34 @@
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EC%97%B0%EA%B2%B0%20%EB%A6%AC%EC%8A%A4%ED%8A%B8/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%A7%E1%86%AF%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/"
   },"5": {
-    "doc": "하노이 탑",
-    "title": "하노이 탑",
-    "content": "# 하노이탑 ## 문제 설명 세 개의 장대가 있고 첫 번째 장대에는 반경이 서로 다른 n개의 원판이 쌓여 있다. 각 원판은 반경이 큰 순서대로 쌓여있다. 이제 수도승들이 다음 규칙에 따라 첫 번째 장대에서 세 번째 장대로 옮기려 한다. 1. 한 번에 한 개의 원판만을 다른 탑으로 옮길 수 있다. 2. 쌓아 놓은 원판은 항상 위의 것이 아래의 것보다 작아야 한다. 이 작업을 수행하는데 필요한 이동 순서를 출력하는 프로그램을 작성하라. 단, 이동 횟수는 최소가 되어야 한다. 아래 그림은 원판이 5개인 경우의 예시이다. ![image-20230208195627966](/Users/soobinok/Library/Application Support/typora-user-images/image-20230208195627966.png) ## 입력 첫째 줄에 첫 번째 장대에 쌓인 원판의 개수 N (1 ≤ N ≤ 100)이 주어진다. ## 출력 첫째 줄에 옮긴 횟수 K를 출력한다. N이 20 이하인 입력에 대해서는 두 번째 줄부터 수행 과정을 출력한다. 두 번째 줄부터 K개의 줄에 걸쳐 두 정수 A B를 빈칸을 사이에 두고 출력하는데, 이는 A번째 탑의 가장 위에 있는 원판을 B번째 탑의 가장 위로 옮긴다는 뜻이다. N이 20보다 큰 경우에는 과정은 출력할 필요가 없다. ## 접근 방법 n개의 원판을 start 기둥에서 end 기둥으로 옮기려면? 1. n-1개의 원판을 other(start, end가 아닌 또다른) 기둥에 옮긴다. 2. start 지점에 남아있는 맨아래의 원판을 end 지점으로 옮긴다. 3. other 기둥에 남아있는 n-1개의 원판을 end 기둥으로 옮긴다. ## 제한 조건 원판은 최대 100개까지 주어질 수 있다. 옮긴 개수는 최대 2의 100제곱 -1 -> 어떻게 처리할까? => BigInteger 사용! ## 코드 ```java import java.math.BigInteger; import java.util.Scanner; public class Main{ public static void hanoi(int disk, int from, int to) { // 출발지, 목적지를 제외한 다른 기둥의 번호 int other = 6 - from - to; // 마지막 원판인 경우 출력 후 종료 if (disk == 1) { System.out.println(from + \" \" + to); return; } // #1. 총 개수 - 1 개의 원판을 from -> other 기둥으로 이동 hanoi(disk - 1, from, other); // #2. disk-1개의 원판을 from -> to 기둥으로 이동 System.out.println(from + \" \" + to); // #3. disk-1개의 원판을 other -> to 기둥으로 이동 hanoi(disk - 1, other, to); } public static void main(String[] args) { Scanner sc = new Scanner(System.in); // 디스크 총 개수 입력 int disk = sc.nextInt(); BigInteger bigTwo = new BigInteger(\"2\"); BigInteger answer = bigTwo.pow(disk).subtract(BigInteger.ONE); // 옮긴 횟수 출력 System.out.println(answer); // 원판 개수가 20개 이하일때 과정 출력 if (disk 재귀 호출 ",
-    "url": "/docs/%EB%B0%B1%EC%A4%80/%EC%9E%85%EA%B5%AD%20%EC%8B%AC%EC%82%AC/",
-    "relUrl": "/docs/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB/%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%80%E1%85%AE%E1%86%A8%20%E1%84%89%E1%85%B5%E1%86%B7%E1%84%89%E1%85%A1/"
-  },"6": {
     "doc": "자료구조 개요",
     "title": "자료구조 개요",
     "content": "# 자료구조 개요 ## 추상데이터타입(Abstract Data Type) 데이터와 그 데이터에 대한 추상적인 연산들로써 구성된다. ## 자료구조 = 일련의 동일한 타입의 데이터를 정돈하여 저장한 구성체 => 추상데이터타입(ADT) + 구현 ## 자료구조의 효율성 - 시간복잡도(Time Complexity) : 수행시간 - 공간복잡도(Space Complexity) : 사용되는 메모리 공간의 크기 ## 수행시간 분석법 * 최악경우 분석(Worst-case Analysis) => 일반적인 방법 * 평균경우 분석(Average-case Analysis) * 최선경우 분석(Best-case Analysis) ## 점근표기법 입력 크기가 증가함에 따른 수행시간의 간단한 표기법 - O(Big-Oh)-표기: 점근적 상한 - Ω(Big-Omega)-표기: 점근적 하한 - Θ(Theta)-표기: 동일한 증가율 --- ## 참고 ### 서적 파이썬과 함께하는 자료구조의 이해 - 양성봉 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%20%EA%B0%9C%EC%9A%94/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD/"
-  },"7": {
+  },"6": {
     "doc": "자료구조",
     "title": "자료구조",
     "content": "# 자료구조 {: .no_toc } ",
     "url": "/docs/Data%20Structure",
     "relUrl": "/docs/Data Structure"
-  },"8": {
+  },"7": {
     "doc": "탐색트리",
     "title": "탐색트리",
     "content": "# 탐색트리 ## 이진탐색(Binary Search Tree) 조건 ) 정렬된 배열에서만 가능 #### 탐색과정 1. 중간 값과 검색 값 비교 2. 2.1 중간 값 < 검색 값 최솟 값 ~ 중간 값 까지의 구간을 대상으로 탐색 2.2 검색 값 < 중간 값 중간 값 ~ 최댓 값 까지의 구간을 대상으로 탐색 3. 값을 찾거나 배열에 값이 없는 것을 확인할 때까지 반복 #### 수행시간 O(logN) ### 단점 데이터의 삽입과 삭제가 빈번하면 정렬을 유지하기 위해 많은 시간이 소요. 1회의 삽입이나 삭제 연산 수행 시 최악 경우 O(N) 시간이 소요. ### 이진탐색트리 = 이진탐색의 개념을 트리 형태의 구조에 접목시킨 자료구조 - 각 노드 n의 키가 n의 왼쪽 서브트리에 있는 노드들의 키들보다 크고, n의 오른쪽 서브트리ㅔ 있는 노드들의 키보다 작다. - 탐색, 삽입, 삭제 연산의 수행시간은 각각 트리 높이에 비례 ## AVL 트리 = 임의의 노드 n에 대해 노드 n의 왼쪽 서브트리의 높이와 오른쪽 서브트리의 높이 차이가 1을 넘지 않는 이진탐색트리 - 회전 연산을 통해 조절하여 트리 높이의 균형을 유지하는 이진탐색트리 - 탐색, 삽입, 삭제 연산의 수행시간은 O(logN) --- ## 참고 ### 서적 파이썬과 함께하는 자료구조의 이해 - 양성봉 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%90%E1%85%A1%E1%86%B7%E1%84%89%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5/"
-  },"9": {
+  },"8": {
     "doc": "트리",
     "title": "트리",
     "content": "# 트리(Tree) = 실제 트리를 거꾸로 세워 놓은 형태의 계층적 자료구조 - 삽입이나 삭제 후에도 정렬 상태를 유지하기 위해 O(N) 시간이 소요되는 list 의 단점 보완 ## 왼쪽자식-오른쪽형제(Left Child-Right Sibling) 표현 => 차수가 일정하지 않은 일반적인 트리를 구현하기에 매우 효율적 - HTML, XML의 문서 트리, 운영체제의 파일시스템, 탐색트리, 이항(Binomial)힙, 피보나치(Fibonacci)힙 과 같은 우선순위큐에서 사용 # 이진트리(Binary Tree) = 각 노드의 자식 수가 2 이하인 트리 ## 이진트리 종류 ![이진트리 벤다이어그램](/assets/images/이진트리 벤다이어그램.jpg) ### 포화이진트리(Full Binary Tree) = 모든 이파리의 깊이가 같고 각 내부노드가 2개의 자식노드를 가지는 트리 ex) ```mermaid graph TD; A-->B; A-->C; B-->D; B-->E; C-->F; C-->G; D-->H; D-->I; E-->J; E-->K; F-->L; F-->M; G-->N; G-->O; ``` ### 완전이진트리(Comeplete Binary Tree) = 마지막 레벨을 제외한 각 레벨이 노드들로 꽉 차있고, 마지막 레벨에는 노드들이 왼쪽부터 빠짐없이 채워진 트리 ```mermaid graph TD; A-->B; A-->C; B-->D; B-->E; C-->F; C-->G; D-->H; D-->I; E-->J; E-->K; F-->L; ``` ## 이진트리의 연산 ### 1) 전위순회(Preorder Traversal) = 노드 n에 도착했을 때 n을 먼저 방문한다. 그 다음에 n의 왼쪽 자식노드로 순회를 계속한다. n의 왼족 서브트리의 모든 노드들을 방문한 후에는 n의 오른쪽 서브트리의 모든 후손 노드들을 방문한다. ![전위순회](/assets/images/전위순회.png) ### 2) 중위순회(Inorder traversal) = 노드 n에 도착하면 n의 방문을 보류하고 n의 왼쪽 서브트리로 순회를 진행한다. 즉, 왼쪽 서브트리의 모든 노드들을 방문한 후에 n을 방문한다. n을 방문한 후에는 n의 오른쪽 서브트리를 같은 방식으로 방문한다. ![중위순회](/assets/images/중위순회.png) ### 3) 후위순회(Postorder traversal) = 노드 n에 도착하면 n의 방문을 보류하고 n의 왼쪽 서브트리로 순회를 진행한다. n의 왼쪽 서브트리를 방문한 후에는 n의 오른쪽 서브트리를 같은 방식으로 방문한다. 그리고 마지막에 n을 방문한다. ![후위순회](/assets/images/후위순회.png) ### 4) 레벨순회(Level-order Traversal) = 루트가 있는 최상위 레벨부터 시작하여 각 레벨마다 좌에서 우로 노드들을 방문한다. ![레벨순회](/assets/images/레벨순회.png) # 우선순위큐(Priority Queue) = 가장 높은 우선순위를 가진 항목을 접근, 삭제, 삽입 연산을 지원하는 자료구조 - 파이썬은 heapq 라이브러리 제공 # 이진힙(Binary Heap) = 부모의 우선순위가 자식의 우선순위보다 높은 우선순위큐 자료구조 - 완전이진트리 - 키값이 작을 수록 높은 순위 => 최소힙 - 키값이 클 수록 높은 순위 => 최대힙 - 최소힙 기준 - 삭제 연산 -> downheap - 삽입 연산 -> upheap --- ## 참고 ### 서적 파이썬과 함께하는 자료구조의 이해 - 양성봉 ",
     "url": "/docs/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8A%B8%EB%A6%AC/",
     "relUrl": "/docs/%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9/%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5/"
+  },"9": {
+    "doc": "하노이탑",
+    "title": "하노이탑",
+    "content": "# 하노이탑 ## 문제 설명 세 개의 장대가 있고 첫 번째 장대에는 반경이 서로 다른 n개의 원판이 쌓여 있다. 각 원판은 반경이 큰 순서대로 쌓여있다. 이제 수도승들이 다음 규칙에 따라 첫 번째 장대에서 세 번째 장대로 옮기려 한다. 1. 한 번에 한 개의 원판만을 다른 탑으로 옮길 수 있다. 2. 쌓아 놓은 원판은 항상 위의 것이 아래의 것보다 작아야 한다. 이 작업을 수행하는데 필요한 이동 순서를 출력하는 프로그램을 작성하라. 단, 이동 횟수는 최소가 되어야 한다. 아래 그림은 원판이 5개인 경우의 예시이다. ![image-20230208195627966](/Users/soobinok/Library/Application Support/typora-user-images/image-20230208195627966.png) ## 입력 첫째 줄에 첫 번째 장대에 쌓인 원판의 개수 N (1 ≤ N ≤ 100)이 주어진다. ## 출력 첫째 줄에 옮긴 횟수 K를 출력한다. N이 20 이하인 입력에 대해서는 두 번째 줄부터 수행 과정을 출력한다. 두 번째 줄부터 K개의 줄에 걸쳐 두 정수 A B를 빈칸을 사이에 두고 출력하는데, 이는 A번째 탑의 가장 위에 있는 원판을 B번째 탑의 가장 위로 옮긴다는 뜻이다. N이 20보다 큰 경우에는 과정은 출력할 필요가 없다. ## 접근 방법 n개의 원판을 start 기둥에서 end 기둥으로 옮기려면? 1. n-1개의 원판을 other(start, end가 아닌 또다른) 기둥에 옮긴다. 2. start 지점에 남아있는 맨아래의 원판을 end 지점으로 옮긴다. 3. other 기둥에 남아있는 n-1개의 원판을 end 기둥으로 옮긴다. ## 제한 조건 원판은 최대 100개까지 주어질 수 있다. 옮긴 개수는 최대 2의 100제곱 -1 -> 어떻게 처리할까? => BigInteger 사용! ## 코드 ```java import java.math.BigInteger; import java.util.Scanner; public class Main{ public static void hanoi(int disk, int from, int to) { // 출발지, 목적지를 제외한 다른 기둥의 번호 int other = 6 - from - to; // 마지막 원판인 경우 출력 후 종료 if (disk == 1) { System.out.println(from + \" \" + to); return; } // #1. 총 개수 - 1 개의 원판을 from -> other 기둥으로 이동 hanoi(disk - 1, from, other); // #2. disk-1개의 원판을 from -> to 기둥으로 이동 System.out.println(from + \" \" + to); // #3. disk-1개의 원판을 other -> to 기둥으로 이동 hanoi(disk - 1, other, to); } public static void main(String[] args) { Scanner sc = new Scanner(System.in); // 디스크 총 개수 입력 int disk = sc.nextInt(); BigInteger bigTwo = new BigInteger(\"2\"); BigInteger answer = bigTwo.pow(disk).subtract(BigInteger.ONE); // 옮긴 횟수 출력 System.out.println(answer); // 원판 개수가 20개 이하일때 과정 출력 if (disk 재귀 호출 ",
+    "url": "/docs/%EB%B0%B1%EC%A4%80/%ED%95%98%EB%85%B8%EC%9D%B4%ED%83%91/",
+    "relUrl": "/docs/%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB/%E1%84%92%E1%85%A1%E1%84%82%E1%85%A9%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A1%E1%86%B8/"
   }
 }
